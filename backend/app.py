@@ -24,8 +24,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 # 1. Search Function
 def web_search(user_query: str) -> str:
     response = tavily.search(query=user_query, max_results=5, search_depth="basic")
-    return "
-".join([r.get("content", "") for r in response.get("results", [])])
+    return "".join([r.get("content", "") for r in response.get("results", [])])
 
 # 2. Summarization Chain
 summary_prompt = ChatPromptTemplate.from_template(
